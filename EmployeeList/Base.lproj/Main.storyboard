@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Employee List View Controller-->
+        <!--Company List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EmployeeListViewController" customModule="EmployeeList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CompanyListViewController" customModule="EmployeeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,6 +20,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eWQ-35-vvx">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rZu-Yp-D3w"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jM2-6Z-hLb"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -32,15 +36,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Api-Gs-0Et"/>
+                    <connections>
+                        <outlet property="tableView" destination="eWQ-35-vvx" id="xDd-qt-qZS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="886.95652173913049" y="63.616071428571423"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Application Container-->
         <scene sceneID="z8B-7w-WYV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZKI-l6-YHt" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZKI-l6-YHt" customClass="ApplicationContainer" customModule="EmployeeList" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hEJ-sJ-Cs3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

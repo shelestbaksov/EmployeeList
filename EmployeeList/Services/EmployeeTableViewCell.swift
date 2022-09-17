@@ -14,21 +14,18 @@ class EmployeeTableViewCell: UITableViewCell {
     private let employeeNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 21, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let employeePhoneLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let employeeSkillsLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private let stackView: UIStackView = {
@@ -48,19 +45,24 @@ class EmployeeTableViewCell: UITableViewCell {
     
     private func setupSubviews() {
         contentView.addSubview(stackView)
+        //contentView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(employeeNameLabel)
         stackView.addArrangedSubview(employeePhoneLabel)
         stackView.addArrangedSubview(employeeSkillsLabel)
-        stackView.distribution = .fillProportionally
         stackView.axis = .vertical
-        stackView.spacing = 5
+        
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: 16, leading: 16, bottom: 16, trailing: 16
+        )
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+        super.updateConstraints()
     }
           
     func configure(with employee: Employee) {

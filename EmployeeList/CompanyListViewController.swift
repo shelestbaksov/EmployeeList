@@ -7,19 +7,12 @@
 
 import UIKit
 
-class EmployeeListViewController: UIViewController {
+class CompanyListViewController: UIViewController {
     
-    var companies: [Company] = []
+    var service: CompaniesService!
     
-    private let tableView: UITableView = {
-        let table = UITableView()
-        table.register(EmployeeTableViewCell.self,
-                       forCellReuseIdentifier: EmployeeTableViewCell.identifier)
-        table.insetsContentViewsToSafeArea = true
-        return table
-    }()
-    
-    var service = EmployeeListService()
+    private var companies: [Company] = []
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +20,7 @@ class EmployeeListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         setUpTableView()
         view.addSubview(tableView)
-        service.fetchEmployeeList { [weak self] result in
+        service.fetchCompanies(completion: { [weak self] result in
             switch result {
             case .success(let companies):
                 self?.companies = companies
@@ -35,7 +28,7 @@ class EmployeeListViewController: UIViewController {
             case .failure(let error):
                 print("Failed to fetch data: \(error)")
             }
-        }
+        })
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,13 +37,15 @@ class EmployeeListViewController: UIViewController {
     }
     
     private func setUpTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.register(
+            EmployeeTableViewCell.self,
+            forCellReuseIdentifier: EmployeeTableViewCell.identifier
+        )
     }
 }
 
 // MARK: -UITableViewDelegate, UITableViewDataSource
-extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource {
+extension CompanyListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return companies.count
@@ -71,10 +66,6 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         }
         return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
     }
 }
     
