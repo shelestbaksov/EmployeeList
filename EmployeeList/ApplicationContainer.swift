@@ -1,10 +1,3 @@
-//
-//  ApplicationContainer.swift
-//  EmployeeList
-//
-//  Created by Leysan Latypova on 17.09.2022.
-//
-
 import Foundation
 import UIKit
 
@@ -22,7 +15,9 @@ class ApplicationContainer: UINavigationController {
                 jsonDecoder: JSONDecoder(),
                 storage: storage
             )
-            companyListVC.service = service
+            let presenter = CompaniesPresenter(companyListView: companyListVC)
+            presenter.service = service
+            companyListVC.output = presenter 
         }
     }
 }

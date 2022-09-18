@@ -18,6 +18,7 @@
 		4033820628D4C56700ABBCD2 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033820528D4C56700ABBCD2 /* EmployeeTableViewCell.swift */; };
 		4035AB7928D5B7F4003276E8 /* CompaniesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4035AB7828D5B7F4003276E8 /* CompaniesStorage.swift */; };
 		4035AB7D28D62041003276E8 /* ApplicationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4035AB7C28D62041003276E8 /* ApplicationContainer.swift */; };
+		4035AB7F28D73571003276E8 /* CompaniesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4035AB7E28D73571003276E8 /* CompaniesPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4033820528D4C56700ABBCD2 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmployeeTableViewCell.swift; path = EmployeeList/Services/EmployeeTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		4035AB7828D5B7F4003276E8 /* CompaniesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesStorage.swift; sourceTree = "<group>"; };
 		4035AB7C28D62041003276E8 /* ApplicationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContainer.swift; sourceTree = "<group>"; };
+		4035AB7E28D73571003276E8 /* CompaniesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				403381EA28D4B28900ABBCD2 /* AppDelegate.swift */,
 				403381EC28D4B28900ABBCD2 /* SceneDelegate.swift */,
 				403381EE28D4B28900ABBCD2 /* CompanyListViewController.swift */,
+				4035AB7E28D73571003276E8 /* CompaniesPresenter.swift */,
 				4035AB7C28D62041003276E8 /* ApplicationContainer.swift */,
 				403381F028D4B28900ABBCD2 /* Main.storyboard */,
 				403381F328D4B28F00ABBCD2 /* Assets.xcassets */,
@@ -182,6 +185,7 @@
 				4033820028D4B96700ABBCD2 /* Employee.swift in Sources */,
 				4033820628D4C56700ABBCD2 /* EmployeeTableViewCell.swift in Sources */,
 				4033820328D4BE8600ABBCD2 /* CompaniesService.swift in Sources */,
+				4035AB7F28D73571003276E8 /* CompaniesPresenter.swift in Sources */,
 				403381EB28D4B28900ABBCD2 /* AppDelegate.swift in Sources */,
 				403381ED28D4B28900ABBCD2 /* SceneDelegate.swift in Sources */,
 				4035AB7D28D62041003276E8 /* ApplicationContainer.swift in Sources */,

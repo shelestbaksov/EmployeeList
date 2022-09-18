@@ -1,39 +1,30 @@
-//
-//  EmployeeListViewController.swift
-//  EmployeeList
-//
-//  Created by Leysan Latypova on 16.09.2022.
-//
-
 import UIKit
 
-class CompanyListViewController: UIViewController {
+protocol CompanyListViewOutput {
+    func onViewDidLoad()
+    func buttonPressed()
+}
+
+class CompanyListViewController: UIViewController, CompanyListView {
     
-    var service: CompaniesService!
+    var output: CompanyListViewOutput!
     
     private var companies: [Company] = []
+    
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var retryButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Employees"
-        navigationController?.navigationBar.prefersLargeTitles = true
         setUpTableView()
-        view.addSubview(tableView)
-        service.fetchCompanies(completion: { [weak self] result in
-            switch result {
-            case .success(let companies):
-                self?.companies = companies
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print("Failed to fetch data: \(error)")
-            }
-        })
+        setupNoDataLabel()
+        output.onViewDidLoad()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+    @IBAction func retryButtonPressed() {
+        output.buttonPressed()
     }
     
     private func setUpTableView() {
@@ -41,6 +32,39 @@ class CompanyListViewController: UIViewController {
             EmployeeTableViewCell.self,
             forCellReuseIdentifier: EmployeeTableViewCell.identifier
         )
+    }
+    
+    private func setupNoDataLabel() {
+        errorLabel.textAlignment = .center
+        errorLabel.textColor = .gray
+        errorLabel.font = .systemFont(ofSize: 21, weight: .medium)
+    }
+    
+    // MARK: - CompanyListView
+    func showSpinner() {
+        activityIndicator.startAnimating()
+        tableView.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    func hideSpinner() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    
+    func showCompanies(companies: [Company]) {
+        self.companies = companies
+        tableView.isHidden = false
+        errorLabel.isHidden = true
+        retryButton.isHidden = true
+        tableView.reloadData()
+    }
+    
+    func showErrorLabel(text: String) {
+        errorLabel.isHidden = false
+        retryButton.isHidden = false
+        tableView.isHidden = true
+        errorLabel.text = text
     }
 }
 

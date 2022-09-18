@@ -4,12 +4,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Company List View Controller-->
+        <!--Employees-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CompanyListViewController" customModule="EmployeeList" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,8 +18,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eWQ-35-vvx">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAM-lW-cyg">
+                                <rect key="frame" x="107" y="498.5" width="200" height="34"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="fa9-kc-61V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Retry">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="retryButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="k4h-oj-6pv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5St-LW-jlM">
+                                <rect key="frame" x="20" y="438" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="DrU-M0-nat">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1qJ-Bs-N3f"/>
+                                    <constraint firstAttribute="width" constant="100" id="di1-gs-jWO"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eWQ-35-vvx">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="rZu-Yp-D3w"/>
@@ -29,28 +65,35 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eWQ-35-vvx" secondAttribute="bottom" id="6RC-FS-Pfd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eWQ-35-vvx" secondAttribute="trailing" id="DS4-gk-dmS"/>
-                            <constraint firstItem="eWQ-35-vvx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hbh-fX-Oq4"/>
-                            <constraint firstItem="eWQ-35-vvx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mkp-Vi-dax"/>
+                            <constraint firstItem="5St-LW-jlM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="OYJ-qB-nnu"/>
+                            <constraint firstItem="DrU-M0-nat" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RW4-sD-WaZ"/>
+                            <constraint firstItem="TAM-lW-cyg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RYb-uB-v4m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5St-LW-jlM" secondAttribute="trailing" constant="20" id="Wsi-AA-d9m"/>
+                            <constraint firstItem="5St-LW-jlM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a8a-1m-X2M"/>
+                            <constraint firstItem="5St-LW-jlM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gKl-Te-GPy"/>
+                            <constraint firstItem="TAM-lW-cyg" firstAttribute="top" secondItem="5St-LW-jlM" secondAttribute="bottom" constant="40" id="lju-u6-ogJ"/>
+                            <constraint firstItem="DrU-M0-nat" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rCp-Fv-KVz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Api-Gs-0Et"/>
+                    <navigationItem key="navigationItem" title="Employees" id="Api-Gs-0Et"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="DrU-M0-nat" id="yeA-fa-KD7"/>
+                        <outlet property="errorLabel" destination="5St-LW-jlM" id="AFM-P1-LJ9"/>
+                        <outlet property="retryButton" destination="TAM-lW-cyg" id="xsP-rG-s73"/>
                         <outlet property="tableView" destination="eWQ-35-vvx" id="xDd-qt-qZS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886.95652173913049" y="63.616071428571423"/>
+            <point key="canvasLocation" x="769.56521739130437" y="63.616071428571423"/>
         </scene>
         <!--Application Container-->
         <scene sceneID="z8B-7w-WYV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZKI-l6-YHt" customClass="ApplicationContainer" customModule="EmployeeList" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hEJ-sJ-Cs3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="hEJ-sJ-Cs3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -64,6 +107,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

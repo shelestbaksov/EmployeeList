@@ -34,7 +34,7 @@ class CompaniesNetworkAndStorageService: CompaniesService {
             urlSession.dataTask(with: url) { [weak self] data, _, error in
                 guard let strongSelf = self else { return }
                 guard let data = data else {
-                    completion(.failure(NetworkError.noData))
+                    completion(.failure(error ?? NetworkError.noData))
                     return
                 }
                 
@@ -53,7 +53,6 @@ class CompaniesNetworkAndStorageService: CompaniesService {
                             strongSelf.storage.save(companies: [company])
                         }
                     }
-                    
                 } catch {
                     completion(.failure(NetworkError.decodingError))
                 }
@@ -61,3 +60,4 @@ class CompaniesNetworkAndStorageService: CompaniesService {
         }
     }
 }
+
