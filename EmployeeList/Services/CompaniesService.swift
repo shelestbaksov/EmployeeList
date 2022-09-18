@@ -40,12 +40,20 @@ class CompaniesNetworkAndStorageService: CompaniesService {
                 
                 do {
                     let companyDict = try strongSelf.jsonDecoder.decode([String: Company].self, from: data)
-                    if let company = companyDict["company"] {
+                    if var company = companyDict["company"] {
                         DispatchQueue.main.async {
+                            company.employees = company.employees.sorted(by: {
+                                if $0.name == $1.name {
+                                    return $0.phone_number < $1.phone_number
+                                } else {
+                                    return $0.name < $1.name
+                                }
+                            })
                             completion(.success([company]))
                             strongSelf.storage.save(companies: [company])
                         }
                     }
+                    
                 } catch {
                     completion(.failure(NetworkError.decodingError))
                 }

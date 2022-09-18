@@ -15,5 +15,5 @@ struct Employee: Codable {
 
 struct Company: Codable {
     let name: String
-    let employees: [Employee]
+    var employees: [Employee]
 }

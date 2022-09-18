@@ -27,9 +27,9 @@ class CompaniesUserDefaultsStorage: CompaniesStorage {
     
     func fetchSavedCompanies() -> [Company]? {
         let savedTime = userDefaults.double(forKey: timeKey)
-        
+        let currentTime = Date().timeIntervalSince1970
         if let data = userDefaults.data(forKey: key) {
-            if Date().timeIntervalSince1970 - savedTime == 3600 {
+            if currentTime - savedTime <= 3600 {
                 if let decoded = try? JSONDecoder().decode([Company].self, from: data) {
                     return decoded
                 }
