@@ -15,8 +15,7 @@ class ApplicationContainer: UINavigationController {
                 jsonDecoder: JSONDecoder(),
                 storage: storage
             )
-            let presenter = CompaniesPresenter(companyListView: companyListVC)
-            presenter.service = service
+            let presenter = CompaniesPresenter(companyListView: companyListVC, service: service)
             companyListVC.output = presenter 
         }
     }

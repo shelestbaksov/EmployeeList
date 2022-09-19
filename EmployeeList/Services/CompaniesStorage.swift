@@ -20,21 +20,21 @@ class CompaniesUserDefaultsStorage: CompaniesStorage {
     func save(companies: [Company]) {
         if let encoded = try? JSONEncoder().encode(companies) {
             userDefaults.set(encoded, forKey: key)
-            let timeinterval = Date().timeIntervalSince1970
-            userDefaults.set(timeinterval, forKey: timeKey)
+            let timeNow = Date().timeIntervalSince1970
+            userDefaults.set(timeNow, forKey: timeKey)
         }
     }
     
     func fetchSavedCompanies() -> [Company]? {
-        let savedTime = userDefaults.double(forKey: timeKey)
-        let currentTime = Date().timeIntervalSince1970
         if let data = userDefaults.data(forKey: key) {
+            let savedTime = userDefaults.double(forKey: timeKey)
+            let currentTime = Date().timeIntervalSince1970
             if currentTime - savedTime <= 3600 {
                 if let decoded = try? JSONDecoder().decode([Company].self, from: data) {
                     return decoded
                 }
             }
         }
-        return []
+        return nil
     }
 }

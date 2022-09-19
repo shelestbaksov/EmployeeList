@@ -68,14 +68,10 @@
 		403381E928D4B28900ABBCD2 /* EmployeeList */ = {
 			isa = PBXGroup;
 			children = (
-				4033820428D4C54900ABBCD2 /* Views */,
+				4033820428D4C54900ABBCD2 /* Company */,
 				4033820128D4B9D900ABBCD2 /* Services */,
 				403381FE28D4B94100ABBCD2 /* Models */,
-				403381EA28D4B28900ABBCD2 /* AppDelegate.swift */,
-				403381EC28D4B28900ABBCD2 /* SceneDelegate.swift */,
-				403381EE28D4B28900ABBCD2 /* CompanyListViewController.swift */,
-				4035AB7E28D73571003276E8 /* CompaniesPresenter.swift */,
-				4035AB7C28D62041003276E8 /* ApplicationContainer.swift */,
+				4095751128D85AAD00BC1F2B /* Application */,
 				403381F028D4B28900ABBCD2 /* Main.storyboard */,
 				403381F328D4B28F00ABBCD2 /* Assets.xcassets */,
 				403381F528D4B28F00ABBCD2 /* LaunchScreen.storyboard */,
@@ -101,12 +97,24 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		4033820428D4C54900ABBCD2 /* Views */ = {
+		4033820428D4C54900ABBCD2 /* Company */ = {
 			isa = PBXGroup;
 			children = (
+				403381EE28D4B28900ABBCD2 /* CompanyListViewController.swift */,
+				4035AB7E28D73571003276E8 /* CompaniesPresenter.swift */,
 				4033820528D4C56700ABBCD2 /* EmployeeTableViewCell.swift */,
 			);
-			path = Views;
+			path = Company;
+			sourceTree = "<group>";
+		};
+		4095751128D85AAD00BC1F2B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				403381EC28D4B28900ABBCD2 /* SceneDelegate.swift */,
+				403381EA28D4B28900ABBCD2 /* AppDelegate.swift */,
+				4035AB7C28D62041003276E8 /* ApplicationContainer.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

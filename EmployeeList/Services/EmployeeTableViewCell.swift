@@ -1,33 +1,27 @@
-//
-//  EmployeeTableViewCell.swift
-//  EmployeeList
-//
-//  Created by Leysan Latypova on 16.09.2022.
-//
-
 import Foundation
 import UIKit
 
-class EmployeeTableViewCell: UITableViewCell {
+final class EmployeeTableViewCell: UITableViewCell {
     static let identifier = "EmployeeTableViewCell"
     
-    private let employeeNameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 21, weight: .bold)
         return label
     }()
     
-    private let employeePhoneLabel: UILabel = {
+    private let phoneLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
         return label
     }()
     
-    private let employeeSkillsLabel: UILabel = {
+    private let skillsLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
         return label
     }()
+    
     private let stackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -45,10 +39,9 @@ class EmployeeTableViewCell: UITableViewCell {
     
     private func setupSubviews() {
         contentView.addSubview(stackView)
-        //contentView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(employeeNameLabel)
-        stackView.addArrangedSubview(employeePhoneLabel)
-        stackView.addArrangedSubview(employeeSkillsLabel)
+        stackView.addArrangedSubview(nameLabel)
+        stackView.addArrangedSubview(phoneLabel)
+        stackView.addArrangedSubview(skillsLabel)
         stackView.axis = .vertical
         
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -65,9 +58,9 @@ class EmployeeTableViewCell: UITableViewCell {
         super.updateConstraints()
     }
           
-    func configure(with employee: Employee) {
-        employeeNameLabel.text = employee.name
-        employeePhoneLabel.text = employee.phone_number
-        employeeSkillsLabel.text = employee.skills.joined(separator: ", ")
+    func configure(with viewData: EmployeeCellViewData) {
+        nameLabel.text = viewData.nameLabelText
+        phoneLabel.text = viewData.phoneLabelText
+        skillsLabel.text = viewData.skillsLabelText
     }
 }

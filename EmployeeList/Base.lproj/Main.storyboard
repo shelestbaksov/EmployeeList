@@ -19,11 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAM-lW-cyg">
-                                <rect key="frame" x="107" y="498.5" width="200" height="34"/>
+                                <rect key="frame" x="100" y="498.5" width="214" height="34"/>
                                 <color key="backgroundColor" name="AccentColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="fa9-kc-61V"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Retry">
@@ -40,7 +37,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5St-LW-jlM">
-                                <rect key="frame" x="20" y="438" width="374" height="20.5"/>
+                                <rect key="frame" x="186.5" y="438" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -65,10 +62,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5St-LW-jlM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="OYJ-qB-nnu"/>
+                            <constraint firstItem="TAM-lW-cyg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="0RO-ru-PPR"/>
                             <constraint firstItem="DrU-M0-nat" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RW4-sD-WaZ"/>
                             <constraint firstItem="TAM-lW-cyg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RYb-uB-v4m"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5St-LW-jlM" secondAttribute="trailing" constant="20" id="Wsi-AA-d9m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TAM-lW-cyg" secondAttribute="trailing" constant="100" id="WR0-c2-5nK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5St-LW-jlM" secondAttribute="trailing" id="Wsi-AA-d9m"/>
                             <constraint firstItem="5St-LW-jlM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a8a-1m-X2M"/>
                             <constraint firstItem="5St-LW-jlM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gKl-Te-GPy"/>
                             <constraint firstItem="TAM-lW-cyg" firstAttribute="top" secondItem="5St-LW-jlM" secondAttribute="bottom" constant="40" id="lju-u6-ogJ"/>

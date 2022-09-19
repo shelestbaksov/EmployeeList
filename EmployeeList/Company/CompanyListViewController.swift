@@ -5,11 +5,11 @@ protocol CompanyListViewOutput {
     func buttonPressed()
 }
 
-class CompanyListViewController: UIViewController, CompanyListView {
+final class CompanyListViewController: UIViewController, CompanyListView {
     
     var output: CompanyListViewOutput!
     
-    private var companies: [Company] = []
+    private var companies: [CompanyViewData] = []
     
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +27,7 @@ class CompanyListViewController: UIViewController, CompanyListView {
         output.buttonPressed()
     }
     
+    // MARK: - Private functions
     private func setUpTableView() {
         tableView.register(
             EmployeeTableViewCell.self,
@@ -45,6 +46,7 @@ class CompanyListViewController: UIViewController, CompanyListView {
         activityIndicator.startAnimating()
         tableView.isHidden = true
         errorLabel.isHidden = true
+        retryButton.isHidden = true
     }
     
     func hideSpinner() {
@@ -52,8 +54,8 @@ class CompanyListViewController: UIViewController, CompanyListView {
         activityIndicator.isHidden = true
     }
     
-    func showCompanies(companies: [Company]) {
-        self.companies = companies
+    func showViewData(viewData: [CompanyViewData]) {
+        companies = viewData
         tableView.isHidden = false
         errorLabel.isHidden = true
         retryButton.isHidden = true
@@ -68,23 +70,23 @@ class CompanyListViewController: UIViewController, CompanyListView {
     }
 }
 
-// MARK: -UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension CompanyListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return companies.count
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return companies[section].name
+        return companies[section].sectionTitle
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return companies[section].employees.count
+        return companies[section].cellDatas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let employee = companies[indexPath.section].employees[indexPath.row]
+        let employee = companies[indexPath.section].cellDatas[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier, for: indexPath) as? EmployeeTableViewCell {
             cell.configure(with: employee)
             return cell
@@ -92,4 +94,3 @@ extension CompanyListViewController: UITableViewDelegate, UITableViewDataSource 
         return UITableViewCell()
     }
 }
-    
