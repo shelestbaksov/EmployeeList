@@ -7,17 +7,6 @@ protocol CompanyListView: AnyObject {
     func showErrorLabel(text: String)
 }
 
-struct CompanyViewData {
-    let sectionTitle: String
-    let cellDatas: [EmployeeCellViewData]
-}
-
-struct EmployeeCellViewData {
-    let nameLabelText: String
-    let phoneLabelText: String
-    let skillsLabelText: String
-}
-
 final class CompaniesPresenter: CompanyListViewOutput {
 
     weak var view: CompanyListView?
@@ -41,7 +30,7 @@ final class CompaniesPresenter: CompanyListViewOutput {
 
     // MARK: - Private functions
     private func loadData() {
-        self.view?.showSpinner()
+        view?.showSpinner()
         
         service.fetchCompanies(completion: { [weak self] result in
             DispatchQueue.main.async {
